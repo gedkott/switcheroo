@@ -1,0 +1,26 @@
+{
+    "name": "ci-build",
+    "version": "1.0.0",
+    "repository": "https://github.com/gedkott/ci-builder",
+    "readme": "README.md",
+    "description": "A tool for managing builds and status checks on github repos",
+    "main": "index.js",
+    "scripts": {
+        "test": "tape src/tests/*.js | colortape",
+        "e2e": "tape functional-tests/init.test.js",
+        "build": "echo BUILDING"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "colortape": "^0.1.1",
+        "proxyquire": "^1.7.10",
+        "sinon": "^1.17.5",
+        "tape": "^4.6.0"
+    },
+    "dependencies": {
+        "github": "^2.4.0",
+        "nodegit": "^0.14.1"
+    }
+}

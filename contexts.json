@@ -1,0 +1,7 @@
+{
+    "contexts": {
+        "ci/test-js": "npm test",
+        "ci/build-js": "npm build"
+    },
+    "githubRepo": "https://github.com/gedkott/ci-builder"
+}
