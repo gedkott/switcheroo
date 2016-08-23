@@ -1,9 +1,9 @@
 {
-    "name": "ci-build",
+    "name": "switcheroo",
     "version": "1.0.0",
-    "repository": "https://github.com/gedkott/ci-builder",
+    "repository": "https://github.com/gedkott/switcheroo",
     "readme": "README.md",
-    "description": "A tool for managing builds and status checks on github repos",
+    "description": "A tool for managing mostly HTTP APIs in Node.js projects",
     "main": "index.js",
     "scripts": {
         "test": "tape src/tests/*.js | colortape",
