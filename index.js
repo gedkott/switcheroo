@@ -23,79 +23,50 @@ function directoryExists(path) {
 module.exports = {
     init: function() {
         ensureDirectoryExistence(path.resolve(config.DEFAULT_ACTIVE_DIR, 'fake.js'));
-        console.log("init")
         var p = new Promise(function(resolve, reject) {
             fs.readdir(config.DEFAULT_REAL_DIR, function(err, files) {
-                console.log(err, files)
                 if (err) {
-                    console.log("ERR")
-                    console.log(err)
                     return reject(err);
                 }
                 var promises = files.map(function(file) {
                     return new Promise(function(resolve, reject) {
-                        console.log("Getting file from place and moving")
                         var readable = fs.createReadStream(path.resolve(config.DEFAULT_REAL_DIR, file));
-                        console.log(readable)
-                        readable.on('data', (chunk) => {
-                            console.log(`readable Received ${chunk.length} bytes of data.`);
-                        });
                         readable.on('end', () => {
-                            console.log('readable There will be no more data.');
-                            return resolve({
-                              'poop': 1
-                            });
+                            return resolve();
                         });
                         readable.on('error', function(error) {
-                            console.error('readable', error);
                         });
-                        console.log('readable created')
                         console.log(`Writing to ${path.resolve(config.DEFAULT_ACTIVE_DIR, path.basename(file))}`)
                         var writable = fs.createWriteStream(path.resolve(config.DEFAULT_ACTIVE_DIR, path.basename(file)));
-                        console.log("var writable creates")
-                        writable.on('data', (chunk) => {
-                            console.log(`writable, Received ${chunk.length} bytes of data.`);
-                        });
+
                         writable.on('end', () => {
-                            console.log('writable, There will be no more data.');
-                            return resolve('adsasds');
+                            return resolve();
                         });
-                        writable.on('error', function(error) {
-                            console.error('writable', error);
-                        });
-                        console.log('writable created')
 
                         readable
                             .pipe(writable)
                             .on('error', (error) => {
-                                console.log('pipe', error)
-                                return reject('asdd');
+                                return reject();
                             })
                             .on('end', () => {
-                                console.log('end')
-                                return reject('asdasd');
+                                return reject();
                             });
-                        console.log('pipng')
                     });
                 });
-                console.log(promises);
                 return Promise.all(promises)
                   .then((a) => {
-                    console.log(a, "Moving");
-                    return resolve([ { special: 'response' } ]);
+                    return resolve();
                   })
                   .catch((err) => {
-                    console.log(err)
+                    return reject();
                   });
             });
         });
         return p
             .then((err) => {
-                console.log(err, "DUmb")
                 return err;
             })
             .catch((err) => {
-              console.log(err, "ERR in ")
             });
     }
 };

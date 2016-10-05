@@ -6,7 +6,6 @@
     "description": "A tool for managing mostly HTTP APIs in Node.js projects",
     "main": "index.js",
     "scripts": {
-        "test": "tape src/tests/*.js | colortape",
         "e2e": "tape functional-tests/init.test.js",
         "build": "echo BUILDING"
     },
