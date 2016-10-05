@@ -1,7 +1,7 @@
-var config = require('./config.js')
-console.log(config)
 var fs = require('fs');
 var path = require('path');
+
+var config = require('./config.js');
 
 function ensureDirectoryExistence(filePath) {
     var dirname = path.dirname(filePath);

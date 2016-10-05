@@ -18,9 +18,5 @@
         "proxyquire": "^1.7.10",
         "sinon": "^1.17.5",
         "tape": "^4.6.0"
-    },
-    "dependencies": {
-        "github": "^2.4.0",
-        "nodegit": "^0.14.1"
     }
 }
